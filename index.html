@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My orders · Table</title>
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/table.css" />
+  </head>
+  <body>
+    <header class="appbar">
+      <h1>My orders</h1>
+      <p>Layout option A · Scrollable table</p>
+    </header>
+    <main>
+      <div class="table-wrap" tabindex="0" aria-label="Orders table, scrolls sideways">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Order</th>
+              <th scope="col">Date</th>
+              <th scope="col">Items</th>
+              <th scope="col">Total</th>
+              <th scope="col">Status</th>
+              <th scope="col">Tracking</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </main>
+    <script src="data/orders.js"></script>
+    <script>
+      const rows = document.getElementById('rows');
+      rows.innerHTML = window.ORDERS.map((o) => `
+        <tr>
+          <td class="mono id" title="${o.id}">${o.id}</td>
+          <td>${o.date}</td>
+          <td class="items">${o.items}</td>
+          <td class="num">${o.total}</td>
+          <td><span class="badge badge-${o.status.key}">${o.status.label}</span></td>
+          <td class="mono id" title="${o.tracking}">${o.tracking}</td>
+        </tr>`).join('');
+    </script>
+  </body>
+</html>
