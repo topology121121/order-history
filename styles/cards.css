@@ -1,0 +1,41 @@
+/* Option B: one card per order, stacked vertically. */
+
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.date { font-size: 12px; color: var(--muted); }
+
+dl {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 8px 10px;
+  margin: 0;
+  font-size: 14px;
+}
+
+dt { color: var(--muted); font-size: 12px; padding-top: 2px; }
+dd { margin: 0; }
+
+/* Show long IDs in full by letting them wrap. */
+dd.id { overflow-wrap: anywhere; font-size: 13px; }
+
+.total { font-weight: 600; }

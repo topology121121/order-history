@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My orders · Cards</title>
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/cards.css" />
+  </head>
+  <body>
+    <header class="appbar">
+      <h1>My orders</h1>
+      <p>Layout option B · Stacked cards</p>
+    </header>
+    <main>
+      <ul class="cards" id="cards" aria-label="Orders"></ul>
+    </main>
+    <script src="data/orders.js"></script>
+    <script>
+      const list = document.getElementById('cards');
+      list.innerHTML = window.ORDERS.map((o) => `
+        <li class="card">
+          <div class="card-head">
+            <span class="badge badge-${o.status.key}">${o.status.label}</span>
+            <span class="date">${o.date}</span>
+          </div>
+          <dl>
+            <dt>Order</dt><dd class="mono id">${o.id}</dd>
+            <dt>Items</dt><dd>${o.items}</dd>
+            <dt>Total</dt><dd class="total">${o.total}</dd>
+            <dt>Tracking</dt><dd class="mono id">${o.tracking}</dd>
+          </dl>
+        </li>`).join('');
+    </script>
+  </body>
+</html>
